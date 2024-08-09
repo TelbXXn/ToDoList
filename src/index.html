@@ -5,10 +5,37 @@
     <title>To-Do List</title>
   </head>
   <body>
+    <dialog class="task">
+      <form class="taskForm">
+        <label for="nameInput">Task Name: </label>
+        <input type="text" id="nameInput" required>
+
+        <label for="descInput">Description: </label>
+        <input type="text" id="descInput">
+
+        <label for="dueDateInput">Due date: </label>
+        <input type="date" id="dueDateInput">
+
+        <label for="priorityInput">Priority: </label>
+        <input type="text" id="priorityInput">
+
+        <button class="tasksubmit" type="submit">Create Task</button>
+      </form>
+    </dialog>
+
+
+
+
+
+
     <header><h1>To-Do List</h1>
     </header>
 
     <nav>
+      <div class="task-creator">
+        <h2>Create a new task</h2>
+        <button class="task-button">+</button>
+      </div>
       <ul>
         <li><button>Add Group</button></li>
         <li>About</li>

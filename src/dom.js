@@ -1,4 +1,4 @@
-export function createButton() {
+export function createDialog() {
   const button = document.createElement('button');  
   button.textContent = 'Create a New Task'
   button.addEventListener('click', () => {
