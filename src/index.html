@@ -19,14 +19,18 @@
         <label for="priorityInput">Priority: </label>
         <input type="text" id="priorityInput">
 
-        <button class="tasksubmit" type="submit">Create Task</button>
+        <button class="tasksubmit">Create Task</button>
       </form>
     </dialog>
 
-
-
-
-
+    <dialog class="group">
+      <form class="groupForm">
+        <label for="groupName">Name: </label>
+        <input type="text" id="groupName">
+        
+        <button class="groupsubmit">Add Project</button>
+      </form>
+    </dialog>
 
     <header><h1>To-Do List</h1>
     </header>
@@ -37,9 +41,10 @@
         <button class="task-button">+</button>
       </div>
       <ul>
-        <li><button>Add Group</button></li>
+        <li><button class="groupBtn">Add Group</button></li>
         <li>About</li>
         <li>Menu</li>
+        <ul class="groupList"></ul>
       </ul>
     </nav>
 

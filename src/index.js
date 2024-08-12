@@ -1,34 +1,63 @@
 import "./style.css"
 import { createTaskDialog } from "./dialogManager"
-import { displayTasks } from "./displayModule";
+import { displayTasks, displayGroups } from "./displayModule";
+import Todos from './app'
+import { Group } from './app'
 
 
-const body = document.querySelector('body');
 const tasks = [];
+const groups = [];
 const dialog = document.querySelector('.task');
-// dialog.addEventListener('DOMContentLoaded', () => {
-//   createTaskDialog(dialog, tasks);
-// })
-const submitTask = document.querySelector('.tasksubmit');
-
-
-
 const createTask = document.querySelector('.task-button');
-createTask.addEventListener('click', () => {
-  // const taskDialog = createTaskDialog(tasks);
-  dialog.showModal();
-  createTaskDialog(submitTask, tasks, dialog);
-  // displayTasks(tasks);
-  console.log(tasks);
+const createGroup = document.querySelector('.groupBtn');
+const groupDialog = document.querySelector('.group');
+const groupSubmit = document.querySelector('.groupsubmit');
+const groupList = document.querySelector('.groupList');
 
 
+const submit = document.querySelector('.tasksubmit');
 
-});
+submit.addEventListener('click', (e) => {
+  e.preventDefault();
 
-const checkArray = document.createElement('button');
-checkArray.addEventListener('click', () => {
+  const newTask = new Todos(
+    nameInput.value,
+    descInput.value,
+    dueDateInput.value,
+    priorityInput.value,
+  );
+
+  tasks.push(newTask);
+
   console.log(tasks);
   displayTasks(tasks);
+    
+  dialog.close();
 });
 
-body.appendChild(checkArray);
+
+createTask.addEventListener('click', () => {
+  dialog.showModal();
+  console.log(tasks);
+});
+
+// Group creation
+createGroup.addEventListener('click', (e) => {
+  groupDialog.showModal();
+});
+
+groupSubmit.addEventListener('click', (e) => {
+  e.preventDefault();
+  const newGroup = new Group(
+    groupName.value
+  )
+
+  groups.push(newGroup)
+  
+  displayGroups(groups);
+
+
+  groupDialog.close();
+})
+
+

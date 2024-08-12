@@ -1,8 +1,8 @@
-export function displayTasks(tasks) {
+export function displayTasks(group) {
   const displayTask = document.querySelector('.todolist');
   displayTask.innerHTML = '';
 
-  tasks.forEach((tasks, index) => {
+  group.tasks.forEach((tasks) => {
     const taskItem = document.createElement('div');
     taskItem.classList.add('item');
 
@@ -16,3 +16,17 @@ export function displayTasks(tasks) {
 
   });
 };
+
+export function displayGroups(groups) {
+  const displayGroup = document.querySelector('.groupList');
+  displayGroup.innerHTML = '';
+
+  groups.forEach((groups) => {
+    const groupItem = document.createElement('li');
+    groupItem.classList.add('group');
+
+    groupItem.innerHTML = `
+    ${groups.name}`
+    displayGroup.appendChild(groupItem);
+  });
+}

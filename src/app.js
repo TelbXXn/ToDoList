@@ -8,3 +8,9 @@ export default class Todos {
 
 }
 
+export class Group { 
+  constructor(name) {
+    this.name = name;
+    this.tasks = [];
+  }
+}
