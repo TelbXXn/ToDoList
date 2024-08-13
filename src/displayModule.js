@@ -1,3 +1,5 @@
+import setCurrentGroup from "./groupManager";
+
 export function displayTasks(group) {
   const displayTask = document.querySelector('.todolist');
   displayTask.innerHTML = '';
@@ -21,12 +23,23 @@ export function displayGroups(groups) {
   const displayGroup = document.querySelector('.groupList');
   displayGroup.innerHTML = '';
 
-  groups.forEach((groups) => {
+  groups.forEach((group) => {
     const groupItem = document.createElement('li');
     groupItem.classList.add('group');
 
     groupItem.innerHTML = `
-    ${groups.name}`
+    ${group.name}`
+
+    groupItem.addEventListener('click', () => {
+
+      setCurrentGroup(group);
+      // console.log("Current group set to:", currentGroup.name);
+
+      displayTasks(group);
+
+      
+    });
+
     displayGroup.appendChild(groupItem);
   });
 }

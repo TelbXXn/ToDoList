@@ -3,9 +3,10 @@ import { createTaskDialog } from "./dialogManager"
 import { displayTasks, displayGroups } from "./displayModule";
 import Todos from './app'
 import { Group } from './app'
+import { getCurrentGroup } from "./groupManager";
 
 
-const tasks = [];
+// const tasks = [];
 const groups = [];
 const dialog = document.querySelector('.task');
 const createTask = document.querySelector('.task-button');
@@ -27,10 +28,10 @@ submit.addEventListener('click', (e) => {
     priorityInput.value,
   );
 
-  tasks.push(newTask);
+  getCurrentGroup().addTask(newTask);
 
-  console.log(tasks);
-  displayTasks(tasks);
+  console.log("adding tasks to group", getCurrentGroup().name);
+  displayTasks(getCurrentGroup());
     
   dialog.close();
 });
@@ -38,7 +39,6 @@ submit.addEventListener('click', (e) => {
 
 createTask.addEventListener('click', () => {
   dialog.showModal();
-  console.log(tasks);
 });
 
 // Group creation
@@ -52,12 +52,16 @@ groupSubmit.addEventListener('click', (e) => {
     groupName.value
   )
 
+  // if (!currentGroup) {
+  //   currentGroup = newGroup;
+  // }
+
   groups.push(newGroup)
   
   displayGroups(groups);
 
-
   groupDialog.close();
+  
 })
 
 

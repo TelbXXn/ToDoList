@@ -17,7 +17,11 @@
         <input type="date" id="dueDateInput">
 
         <label for="priorityInput">Priority: </label>
-        <input type="text" id="priorityInput">
+        <select name="prio" id="priorityInput">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
 
         <button class="tasksubmit">Create Task</button>
       </form>
@@ -42,9 +46,8 @@
       </div>
       <ul>
         <li><button class="groupBtn">Add Group</button></li>
-        <li>About</li>
-        <li>Menu</li>
-        <ul class="groupList"></ul>
+        <ul class="groupList">
+        </ul>
       </ul>
     </nav>
 

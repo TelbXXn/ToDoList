@@ -13,4 +13,8 @@ export class Group {
     this.name = name;
     this.tasks = [];
   }
+
+  addTask(task) {
+    this.tasks.push(task);
+  }
 }
