@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <title>To-Do List</title>
+    <title>Todo List</title>
   </head>
   <body>
     <dialog class="task">
@@ -17,7 +17,7 @@
         <input type="date" id="dueDateInput">
 
         <label for="priorityInput">Priority: </label>
-        <select name="prio" id="priorityInput">
+        <select name="prio" id="priorityInput" required>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
@@ -36,16 +36,17 @@
       </form>
     </dialog>
 
-    <header><h1>To-Do List</h1>
+    <header><h1>Todo List</h1>
     </header>
 
     <nav>
-      <div class="task-creator">
-        <h2>Create a new task</h2>
-        <button class="task-button">+</button>
+      <div class="creators">
+        <button class="task-button">Add Task</button>
+        <button class="groupBtn">Add Group</button>
       </div>
+
       <ul>
-        <li><button class="groupBtn">Add Group</button></li>
+        <!-- <li><button class="groupBtn">Add Group</button></li> -->
         <ul class="groupList">
         </ul>
       </ul>

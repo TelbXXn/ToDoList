@@ -1,25 +1,51 @@
 import "./style.css"
-import { createTaskDialog } from "./dialogManager"
 import { displayTasks, displayGroups } from "./displayModule";
 import Todos from './app'
 import { Group } from './app'
 import { getCurrentGroup } from "./groupManager";
 
 
-// const tasks = [];
 const groups = [];
 const dialog = document.querySelector('.task');
 const createTask = document.querySelector('.task-button');
 const createGroup = document.querySelector('.groupBtn');
 const groupDialog = document.querySelector('.group');
 const groupSubmit = document.querySelector('.groupsubmit');
-const groupList = document.querySelector('.groupList');
-
-
 const submit = document.querySelector('.tasksubmit');
+
+
+function saveData() {
+  localStorage.setItem("groups", JSON.stringify(groups))
+}
+
+function getData() {
+  const storedGroups = JSON.parse(localStorage.getItem("groups"));
+
+  if (storedGroups) {
+    storedGroups.forEach(groupData => {
+      const group = new Group(groupData.name);
+      group.tasks = groupData.tasks.map(taskData => new Todos(
+        taskData.title,
+        taskData.desc,
+        taskData.dueDate,
+        taskData.priority
+
+      ));
+      groups.push(group)
+    });
+    displayGroups(groups);
+  }
+
+}
+
+document.addEventListener('DOMContentLoaded', (e) => {
+  getData();
+});
+
 
 submit.addEventListener('click', (e) => {
   e.preventDefault();
+  if (nameInput.value && dueDateInput.value && priorityInput.value) {
 
   const newTask = new Todos(
     nameInput.value,
@@ -32,8 +58,11 @@ submit.addEventListener('click', (e) => {
 
   console.log("adding tasks to group", getCurrentGroup().name);
   displayTasks(getCurrentGroup());
-    
+  document.querySelector('.taskForm').reset();
+  saveData();
   dialog.close();
+}
+
 });
 
 
@@ -48,20 +77,24 @@ createGroup.addEventListener('click', (e) => {
 
 groupSubmit.addEventListener('click', (e) => {
   e.preventDefault();
+
+  if (groupName.value) {
+
   const newGroup = new Group(
     groupName.value
   )
-
-  // if (!currentGroup) {
-  //   currentGroup = newGroup;
-  // }
 
   groups.push(newGroup)
   
   displayGroups(groups);
 
+  document.querySelector('.groupForm').reset();
+
+  saveData();
+
   groupDialog.close();
+}
   
-})
+});
 
 

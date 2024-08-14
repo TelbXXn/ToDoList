@@ -9,10 +9,10 @@ export function displayTasks(group) {
     taskItem.classList.add('item');
 
     taskItem.innerHTML = `
-    Task: ${tasks.title}
-    Description: ${tasks.desc}
-    Due Date: ${tasks.dueDate}
-    Priority: ${tasks.priority}`
+    <p>Task: ${tasks.title}</p>
+    <p>Description: ${tasks.desc}</p>
+    <p>Due Date: ${tasks.dueDate}</p>
+    <p>Priority: ${tasks.priority}</p>`
 
     displayTask.appendChild(taskItem);
 
@@ -31,6 +31,9 @@ export function displayGroups(groups) {
     ${group.name}`
 
     groupItem.addEventListener('click', () => {
+      document.querySelectorAll('.group').forEach(item => item.classList.remove('selected'));
+      groupItem.classList.add('selected');
+
 
       setCurrentGroup(group);
       // console.log("Current group set to:", currentGroup.name);
