@@ -14,7 +14,7 @@ const groupSubmit = document.querySelector('.groupsubmit');
 const submit = document.querySelector('.tasksubmit');
 
 
-function saveData() {
+export function saveData() {
   localStorage.setItem("groups", JSON.stringify(groups))
 }
 
